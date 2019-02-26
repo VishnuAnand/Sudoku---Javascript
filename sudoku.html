@@ -1,0 +1,230 @@
+<html>
+
+<head>
+    <title>Sudoku</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .panel {
+            height: 540px;
+            width: 540px;
+            background-color: gray;
+        }
+
+        .single_cell {
+            height: 60px;
+            width: 60px;
+            font-size: 48px;
+            text-align: center;
+            background-color: white;
+            border: black 1px dashed;
+            float: left;
+        }
+
+        .disabled {
+            background-color: #e4e4e4;
+        }
+
+        .invalid {
+            background-color: #e78f8f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panel" onclick="fun()">
+        <input id="00" onkeyup="keydown()" class="single_cell" />
+        <input id="01" onkeyup="keydown()" class="single_cell" />
+        <input id="02" onkeyup="keydown()" class="single_cell" />
+        <input id="03" onkeyup="keydown()" class="single_cell" />
+        <input id="04" onkeyup="keydown()" class="single_cell" />
+        <input id="05" onkeyup="keydown()" class="single_cell" />
+        <input id="06" onkeyup="keydown()" class="single_cell" />
+        <input id="07" onkeyup="keydown()" class="single_cell" />
+        <input id="08" onkeyup="keydown()" class="single_cell" />
+
+        <input id="10" onkeyup="keydown()" class="single_cell" />
+        <input id="11" onkeyup="keydown()" class="single_cell" />
+        <input id="12" onkeyup="keydown()" class="single_cell" />
+        <input id="13" onkeyup="keydown()" class="single_cell" />
+        <input id="14" onkeyup="keydown()" class="single_cell" />
+        <input id="15" onkeyup="keydown()" class="single_cell" />
+        <input id="16" onkeyup="keydown()" class="single_cell" />
+        <input id="17" onkeyup="keydown()" class="single_cell" />
+        <input id="18" onkeyup="keydown()" class="single_cell" />
+
+        <input id="20" onkeyup="keydown()" class="single_cell" />
+        <input id="21" onkeyup="keydown()" class="single_cell" />
+        <input id="22" onkeyup="keydown()" class="single_cell" />
+        <input id="23" onkeyup="keydown()" class="single_cell" />
+        <input id="24" onkeyup="keydown()" class="single_cell" />
+        <input id="25" onkeyup="keydown()" class="single_cell" />
+        <input id="26" onkeyup="keydown()" class="single_cell" />
+        <input id="27" onkeyup="keydown()" class="single_cell" />
+        <input id="28" onkeyup="keydown()" class="single_cell" />
+
+        <input id="30" onkeyup="keydown()" class="single_cell" />
+        <input id="31" onkeyup="keydown()" class="single_cell" />
+        <input id="32" onkeyup="keydown()" class="single_cell" />
+        <input id="33" onkeyup="keydown()" class="single_cell" />
+        <input id="34" onkeyup="keydown()" class="single_cell" />
+        <input id="35" onkeyup="keydown()" class="single_cell" />
+        <input id="36" onkeyup="keydown()" class="single_cell" />
+        <input id="37" onkeyup="keydown()" class="single_cell" />
+        <input id="38" onkeyup="keydown()" class="single_cell" />
+
+        <input id="40" onkeyup="keydown()" class="single_cell" />
+        <input id="41" onkeyup="keydown()" class="single_cell" />
+        <input id="42" onkeyup="keydown()" class="single_cell" />
+        <input id="43" onkeyup="keydown()" class="single_cell" />
+        <input id="44" onkeyup="keydown()" class="single_cell" />
+        <input id="45" onkeyup="keydown()" class="single_cell" />
+        <input id="46" onkeyup="keydown()" class="single_cell" />
+        <input id="47" onkeyup="keydown()" class="single_cell" />
+        <input id="48" onkeyup="keydown()" class="single_cell" />
+
+        <input id="50" onkeyup="keydown()" class="single_cell" />
+        <input id="51" onkeyup="keydown()" class="single_cell" />
+        <input id="52" onkeyup="keydown()" class="single_cell" />
+        <input id="53" onkeyup="keydown()" class="single_cell" />
+        <input id="54" onkeyup="keydown()" class="single_cell" />
+        <input id="55" onkeyup="keydown()" class="single_cell" />
+        <input id="56" onkeyup="keydown()" class="single_cell" />
+        <input id="57" onkeyup="keydown()" class="single_cell" />
+        <input id="58" onkeyup="keydown()" class="single_cell" />
+
+        <input id="60" onkeyup="keydown()" class="single_cell" />
+        <input id="61" onkeyup="keydown()" class="single_cell" />
+        <input id="62" onkeyup="keydown()" class="single_cell" />
+        <input id="63" onkeyup="keydown()" class="single_cell" />
+        <input id="64" onkeyup="keydown()" class="single_cell" />
+        <input id="65" onkeyup="keydown()" class="single_cell" />
+        <input id="66" onkeyup="keydown()" class="single_cell" />
+        <input id="67" onkeyup="keydown()" class="single_cell" />
+        <input id="68" onkeyup="keydown()" class="single_cell" />
+
+        <input id="70" onkeyup="keydown()" class="single_cell" />
+        <input id="71" onkeyup="keydown()" class="single_cell" />
+        <input id="72" onkeyup="keydown()" class="single_cell" />
+        <input id="73" onkeyup="keydown()" class="single_cell" />
+        <input id="74" onkeyup="keydown()" class="single_cell" />
+        <input id="75" onkeyup="keydown()" class="single_cell" />
+        <input id="76" onkeyup="keydown()" class="single_cell" />
+        <input id="77" onkeyup="keydown()" class="single_cell" />
+        <input id="78" onkeyup="keydown()" class="single_cell" />
+
+        <input id="80" onkeyup="keydown()" class="single_cell" />
+        <input id="81" onkeyup="keydown()" class="single_cell" />
+        <input id="82" onkeyup="keydown()" class="single_cell" />
+        <input id="83" onkeyup="keydown()" class="single_cell" />
+        <input id="84" onkeyup="keydown()" class="single_cell" />
+        <input id="85" onkeyup="keydown()" class="single_cell" />
+        <input id="86" onkeyup="keydown()" class="single_cell" />
+        <input id="87" onkeyup="keydown()" class="single_cell" />
+        <input id="88" onkeyup="keydown()" class="single_cell" />
+    </div>
+    <script>
+        var rowBlock;
+        var columnBlock;
+        var rowIndex = 0;
+        var currValue;
+        var puzzle = [
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [4, 5, 6, 7, 8, 9, 1, 2, 3],
+            [7, 8, 9, 1, 2, 3, 4, 5, 6],
+            [2, 3, 4, 5, 6, 7, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
+
+        puzzle.forEach(rowArray);
+
+        function rowArray(value, index, array) {
+            rowIndex = index;
+            array[index].forEach(columnArray);
+        }
+
+        function columnArray(value, index, array) {
+            var elem = document.getElementById(rowIndex + "" + index);
+            if (value == 0) {
+                elem.value = "";
+            } else {
+                elem.value = value;
+                elem.setAttribute("disabled", "");
+                elem.setAttribute("class", "single_cell disabled");
+            }
+        }
+
+        function fun() {
+            var x = event.pageX; // Get the horizontal coordinate
+            var y = event.pageY; // Get the vertical coordinate
+            var coor = "X coords: " + x + ", Y coords: " + y;
+            console.log(coor);
+
+            columnBlock = parseInt(x / 60);
+            rowBlock = parseInt(y / 60);
+            var block = "Row : " + rowBlock + ", Coloumn: " + columnBlock;
+            console.log(block);
+        }
+
+        function keydown() {
+            var elem = document.getElementById(rowBlock + "" + columnBlock);
+            var v = elem.value;
+            if (v >= 1) {
+                console.log("Done " + v + "- R:" + rowBlock);
+                elem.setAttribute("class", "single_cell");
+                if (!checkValidRowColumn(v, rowBlock, columnBlock)) {
+                    if (puzzle[rowBlock][columnBlock] != v) {
+                        elem.setAttribute("class", "single_cell invalid");
+                    }
+                }
+            } else {
+                console.log("Invalid Input " + v);
+                elem.setAttribute("class", "single_cell invalid");
+            }
+        }
+
+        function checkValidRowColumn(val, row, col) {
+            currValue = val;
+            if (!puzzle[row].some(rowCheck) && !puzzle.some(colCheck) && !boxCheck()) {
+                puzzle[rowBlock][columnBlock] = parseInt(val);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function rowCheck(value, index, array) {
+            console.log("Row values = " + value);
+            return value == currValue;
+        }
+
+        function colCheck(value, index, array) {
+            console.log("Column values = " + array[index][columnBlock]);
+            return array[index][columnBlock] == currValue;
+        }
+
+
+
+        function boxCheck() {
+            for (var i = 0; i <= 8; i++) {
+                for (var j = 0; j <= 8; j++) {
+                    console.log(puzzle[i][j]+"-"+parseInt(i/3)+""+parseInt(j/3));
+                    if(parseInt(i/3)+""+parseInt(j/3)==parseInt(rowBlock/3)+""+parseInt(columnBlock/3)){
+                        if(puzzle[i][j]==currValue){
+                            console.log("Already Exist");
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
